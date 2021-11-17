@@ -7,6 +7,7 @@ const initialParam = {
     content: "/layouts/formLayout", 
     subcontent: "/contact/form", 
     active: "Kontak",
+    subtitle: "Kontak"
 }
 
 module.exports = {

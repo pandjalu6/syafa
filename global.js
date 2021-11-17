@@ -21,11 +21,6 @@ const sidebars = [
         icon: "far fa-id-card",
         href: "/contact"
     },
-    {
-        title: "Laporan",
-        icon: "far fa-flag",
-        href: "/report"
-    },
 ];
 
 const schemaViewParams = obj => {
