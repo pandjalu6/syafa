@@ -1,0 +1,73 @@
+<% var dir = process.cwd() + "/views" %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card card-outline card-success">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <h2><%= subtitle %></h2>
+                        
+                        <% if(message) { %>
+                            <div class="alert alert-success"><%= message %></div>
+                        <% } %>
+
+                        <%- include(dir + subcontent) %>
+
+                        <% if(query.createdAt && query.updatedAt) { %>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="">Tanggal Pembuatan</label>
+                                    <input type="text" class="form-control" value="<%= query.createdAt %>" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="">Tanggal Perubahan</label>
+                                    <input type="text" class="form-control" value="<%= query.updatedAt %>" readonly>
+                                </div>
+                            </div>
+                        <% } %>
+
+                        <% if(isCreate) { %>
+                            <button type="submit" class="btn btn-primary m-auto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="far fa-save"></i>
+                                    </div>
+                                    <div class="col">Save</div>
+                                </div>
+                            </button>
+                        <% } else if(isEdit) { %>
+                            <button type="submit" class="btn btn-success m-auto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="far fa-save"></i>
+                                    </div>
+                                    <div class="col">Edit</div>
+                                </div>
+                            </button>
+                        <% } else if(isShow) { %>
+                            <a href="<%= isShow %>" class="btn btn-warning m-auto">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="col">Edit</div>
+                                </div>
+                            </a>
+                        <% } %>
+
+
+                        <a class="btn btn-secondary m-auto" onclick="window.history.back()">
+                            <div class="row">
+                                <div class="col-2">
+                                    <i class="fas fa-arrow-alt-circle-left"></i>
+                                </div>
+                                <div class="col">Back</div>
+                            </div>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

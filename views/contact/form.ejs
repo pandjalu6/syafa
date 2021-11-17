@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="name">Whatsapp</label>
+        <input type="text" class="form-control <%= errors['whatsapp'] && `is-invalid` %>" name="whatsapp" id="Whatsapp" placeholder="Nomor" value="<%= query['whatsapp'] %>" <%= !isEdit ? "readonly" : ""  %> >
+
+        <% if(errors['whatsapp']) { %>
+            <div class="alert alert-danger"><%= errors['whatsapp'] %></div>
+        <% } %>
+    </div>
+</div>

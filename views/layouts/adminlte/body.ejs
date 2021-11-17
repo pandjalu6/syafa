@@ -1,0 +1,42 @@
+<% var dir = process.cwd() + "/views" %>
+
+<div class="wrapper">
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+
+    <!-- Navbar -->
+    <%- include('navbar'); %>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <%- include('sidebar'); %>
+    <!-- /.Main Sidebar Container -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <%- include('content-header'); %>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <%- include(dir + content); %>
+            </div>
+            <!--/. container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- footer -->
+    <%- include('footer'); %>
+    <!-- /.footer -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->

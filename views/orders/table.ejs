@@ -1,0 +1,28 @@
+<table id="orders_table" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama Layanan</th>
+            <th>Nama Pelanggan</th>
+            <th>No Pelanggan</th>
+            <th>Terlayani</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% orders.forEach((v,i) => { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><a href="<%= base_url %>/services/detail/<%= v.id_layanan %>"><%= v.nama_layanan %></a></td>
+                <td><%= v.nama %></td>
+                <td><%= v.nomor %></td>
+                <td><%= v.terlayani == 1 ? "yes" : "no" %></td>
+                <td class="text-center">
+                    <% if(v.terlayani == 0) { %>
+                        <button type="button" class="btn btn-outline-info btn-sm" onclick="window.location.href = `<%= base_url %>/orders/done/<%= v.id %>`"><i class="far fa-check-circle"></i></button>
+                    <% } %>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

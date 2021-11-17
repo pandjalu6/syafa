@@ -1,0 +1,30 @@
+<table id="service_table" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Deskripsi</th>
+            <th>Image</th>
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% services.forEach((v, i) => { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= v.nama %></td>
+                <td><%= v.deskripsi.slice(0, 50) + (v.deskripsi.length > 50 ? "..." : "") %></td>
+                <td><%= v.image %></td>
+                <td><%= v.createdAt %></td>
+                <td><%= v.updatedAt %></td>
+                <td class="text-center">
+                    <button  type="button" class="btn btn-outline-info btn-sm" onclick="window.location.href = `<%= base_url %>/services/detail/<%= v.id %>`"><i class="fa fa-eye"></i></button>
+                    <button type="button" class="btn btn-outline-success btn-sm btn-edit" onclick="window.location.href = `<%= base_url %>/services/edit/<%= v.id %>`"><i class="fas fa-pencil-alt"></i></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm btn-edit" onclick="window.location.href = `<%= base_url %>/services/delete/<%= v.id %>`"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

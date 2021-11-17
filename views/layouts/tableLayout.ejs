@@ -1,0 +1,20 @@
+<% var dir = process.cwd() + "/views" %>
+
+<div class="row justify-content-center">
+    <% if(create) { %>
+        <div class="d-flex flex-row justify-content-end mb-3 px-3" style="width: 100%">
+            <button class="btn btn-success" onclick="window.location.href = `<%= create %>`">Tambah Data</button>
+        </div>
+    <% } %>
+    <div class="col-md-12">
+        <div class="card card-outline card-success">
+            <div class="card-body">
+                <h2><%= subtitle %></h2>
+                <% if(message) { %>
+                    <div class="alert alert-success"><%= message %></div>
+                <% } %>
+                <%- include(dir + subcontent); %>
+            </div>
+        </div>
+    </div>
+</div>

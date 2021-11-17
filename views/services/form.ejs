@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="form-group col-md-6">
+        <label for="name">Nama</label>
+        <input type="text" class="form-control <%= errors['nama'] && `is-invalid` %>" name="nama" id="nama" placeholder="Nama Layanan" value="<%= query['nama'] %>" <%= isShow ? "readonly" : ""  %> >
+
+        <% if(errors['nama']) { %>
+            <div class="alert alert-danger"><%= errors['nama'] %></div>
+        <% } %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="name">Deskripsi</label>
+        <textarea class="form-control <%= errors['deskripsi'] && `is-invalid` %>" id="deskripsi" name="deskripsi" placeholder="deskripsi" rows="4" cols="50" <%= isShow ? "disabled" : ""  %>><%= query['deskripsi'] %></textarea>
+
+        <% if(errors['deskripsi']) { %>
+            <div class="alert alert-danger"><%= errors['deskripsi'] %></div>
+        <% } %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-12">
+        <label for="name">Image</label>
+        <input type="text" class="form-control <%= errors['image'] && `is-invalid` %>" name="image" id="image" placeholder="URL Gambar" value="<%= query['image'] %>" <%= isShow ? "readonly" : ""  %> >
+
+        <% if(errors['image']) { %>
+            <div class="alert alert-danger"><%= errors['image'] %></div>
+        <% } %>
+    </div>
+</div>
