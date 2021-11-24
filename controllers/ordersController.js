@@ -1,7 +1,9 @@
 const {schemaViewParams} = require('../global');
 const model = require('../models/laporanModel');
+const serviceModel = require('../models/layananModel') ;
 const db = require('../db');
 const {QueryTypes} = require('sequelize');
+const {validationResult} = require('express-validator')
 
 const initialParam = {
     title: "Pesanan", 
@@ -42,7 +44,44 @@ module.exports = {
             }, 3000);
             res.send("Data tidak ada!")
         }
-    }
+    },
 
+    order: async(req,res) => {
+        try {
+            const errors = validationResult(req).array();
+            if(errors[0]) {
+                res.send({
+                    status: 500,
+                    message: errors
+                })
+                return;
+            }
+
+            const {id_layanan, nama, nomor} = req.body;
+
+            let service = await serviceModel.findByPk(id_layanan)
+            if(!service) {
+                res.send({
+                    status: 404,
+                    message: "Data not found"
+                })
+                return;
+            }
+
+            let data = await model.create({
+                id_layanan,
+                nama,
+                nomor
+            });
+
+            res.send({
+                status: 200,
+                data
+            })
+        } catch (error) {
+            console.log(error)
+            res.send('There is something is wrong');
+        }
+    }
     
 } 

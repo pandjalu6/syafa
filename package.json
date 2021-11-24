@@ -10,6 +10,7 @@
     "nodemon": "^2.0.14"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
@@ -17,6 +18,7 @@
     "express-session": "^1.17.2",
     "express-validator": "^6.13.0",
     "mysql2": "^2.3.3-rc.0",
+    "passport": "^0.5.0",
     "sequelize": "^6.9.0",
     "url": "^0.11.0"
   }

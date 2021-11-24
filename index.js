@@ -5,6 +5,7 @@ const routes = require('./routes');
 const db = require('./db');
 const session = require('express-session');
 const {flash} = require('express-flash-message');
+const cors = require('cors');
 
 db.authenticate().then(res => console.log("Database is Connected!")).catch(err => console.log("There is something wrong when connect Database!"))
 
@@ -18,6 +19,7 @@ app.use(session({
 
 app.use(flash({ sessionKeyName: 'flashMessage' }));
 
+app.use(cors())
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
@@ -27,4 +29,4 @@ app.set('view engine', 'ejs');
 app.use('/', routes);
 
 
-app.listen(3000, () => console.log('Server Is running at port 3000'));
+app.listen(8000, () => console.log('Server Is running at port 8000'));

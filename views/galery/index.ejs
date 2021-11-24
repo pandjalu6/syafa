@@ -1,0 +1,53 @@
+<h1><%= title %></h1>
+
+<div class="d-flex flex-wrap">
+    <% query.forEach(val => { %>
+        <div style="background: white; width: 300px; height: 200px;" data-toggle="modal" data-target="#modal" class="m-5 d-flex flex-row justify-content-center align-items-center image" data-image="<%= val.image || `` %>" data-id="<%= val.id || `` %>">
+            <% if(!val.image || val.image == "") { %>
+                <i class="fas fa-plus" style="font-size: 100px;"></i>
+            <% } else { %>
+                <img src="<%= val.image %>" width="300" height="200">
+            <% } %>
+        </div>
+    <% }) %>
+</div>
+
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Photo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="post" action="">
+            <div class="modal-body">
+                <input type="text" id="id" name="id" hidden>
+                <div class="form-group">
+                  <label for="url">Photo URL</label>
+                  <input type="text" class="form-control" id="url" placeholder="URL" name="image">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script>
+    let urlEl = document.getElementById('url');
+    let idEl = document.getElementById('id');
+    let elements = document.getElementsByClassName('image');
+    for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', function () {
+        const {image, id} = this.dataset;
+        urlEl.value = image;
+        idEl.value = id
+    });
+}
+</script>

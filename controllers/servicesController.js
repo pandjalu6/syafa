@@ -12,8 +12,16 @@ const initialParam = {
 module.exports = {
     get: async (req,res) => {
         try {
-            let message = await req.consumeFlash('message')
+            const isAPI = req.url.split('/')[1] == "api";
             let data = await model.findAll();
+            if(isAPI) {
+                res.send({
+                    status: 200,
+                    data
+                })
+                return;
+            }
+            let message = await req.consumeFlash('message')
             res.render('index', schemaViewParams({
                 ...initialParam,
                 services: data,
@@ -24,7 +32,9 @@ module.exports = {
                 message: message[0]
             }))
         } catch (error) {
-            res.send("Ada sesuatu kesalahan")
+            res.send({
+                error
+            })
         }
     },
 
