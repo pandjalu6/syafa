@@ -22,7 +22,8 @@ module.exports = {
             }
             res.render('index', schemaViewParams({
                 ...initialParam,
-                data
+                data,
+                base_url: req.protocol + '://' + req.get('host')
             }));
         } catch (error) {
             next(error);
@@ -31,19 +32,32 @@ module.exports = {
     },
 
     update: async(req,res,next) => {
-        const {id, image} = req.body;
-        if(!id) {
+        if(res.file) {
             res.send("There is something is wrong");
             return;
         }
 
         try {
-            const data = await model.findByPk(id);
-            data.image = image;
+            const data = await model.findByPk(req.params.id);
+            data.image = req.protocol + '://' + req.get('host') + "/" + (req.file.destination).replace("public/", "") + req.file.filename;
             await data.save();
             res.redirect('/galery')
             return;
         } catch (error) {
+            res.send("Data Not Found");
+            return;
+        }
+    },
+
+    delete: async(req,res,next) => {
+        try {
+            const data = await model.findByPk(req.params.id);
+            data.image = "";
+            await data.save();
+            res.redirect('/galery')
+            return;
+        } catch (error) {
+            console.log(error)
             res.send("Data Not Found");
             return;
         }

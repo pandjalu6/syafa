@@ -1,7 +1,22 @@
 const route = require('express').Router();
 const {dashboard, services, contact, orders, galery} = require('./controllers/index');
-const {check} = require('express-validator')
 const {appendValidation} = require('./global');
+const multer = require('multer');
+const nanoId = require('nanoid');
+const path = require('path');
+const galeryStorage = multer.diskStorage({
+    destination: (req,file,cb) => {
+        cb(null, "public/img/uploads/galery/")
+    },
+
+    filename: (req, file, cb) => {
+        let id = nanoId.nanoid()
+        cb(null, id + path.extname(file.originalname))
+    }
+})
+
+const galeryMulter = multer({storage: galeryStorage})
+
 let validator = {
     contact: {
         update: appendValidation({
@@ -47,7 +62,8 @@ route.get('/orders', orders.get);
 route.get('/orders/done/:id', orders.done);
 
 route.get('/galery', galery.get);
-route.post('/galery', galery.update);
+route.post('/galery/update/:id', galeryMulter.single('image'), galery.update);
+route.get('/galery/delete/:id', galery.delete)
 
 // api
 route.get('/api/services', services.get);

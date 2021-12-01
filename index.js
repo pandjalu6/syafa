@@ -6,6 +6,7 @@ const db = require('./db');
 const session = require('express-session');
 const {flash} = require('express-flash-message');
 const cors = require('cors');
+const multer = require('multer');
 
 db.authenticate().then(res => console.log("Database is Connected!")).catch(err => console.log("There is something wrong when connect Database!"))
 
@@ -23,7 +24,7 @@ app.use(cors())
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
-app.use(express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 
 app.use('/', routes);
