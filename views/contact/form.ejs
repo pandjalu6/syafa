@@ -7,4 +7,15 @@
             <div class="alert alert-danger"><%= errors['whatsapp'] %></div>
         <% } %>
     </div>
+
+    <div class="form-group col-md-12">
+        <label for="about">About Us</label>
+        <textarea class="form-control <%= errors['about'] && `is-invalid` %>" rows="3" name="about" id="about" placeholder="About US" <%= !isEdit ? "readonly" : ""  %>>
+            <%= query['about'] %>
+        </textarea>
+
+        <% if(errors['about']) { %>
+            <div class="alert alert-danger"><%= errors['about'] %></div>
+        <% } %>
+      </div>
 </div>

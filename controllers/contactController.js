@@ -57,6 +57,7 @@ module.exports = {
 
         const query = await model.findOne();
         query.whatsapp = `${req.body.whatsapp}`;
+        query.about = `${req.body.about}`;
         await query.save();
 
         await req.flash('message', "Kontak berhasil di perbarui!")

@@ -5,6 +5,9 @@ const kontak = db.define('kontak', {
     whatsapp: {
         type: DataTypes.STRING
     },
+    about: {
+        type: DataTypes.STRING
+    }
 }, {
     freezeTableName: true,
     timestamps: true
