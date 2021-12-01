@@ -13,7 +13,15 @@ const initialParam = {
 module.exports = {
     get: async (req,res,next) => {
         try {
+            const isAPI = req.url.split('/')[1] == "api";
             const query = await (await model.findOne()).get();
+            if(isAPI) {
+                res.send({
+                    status: 200,
+                    data: query
+                })
+                return;
+            }
             const message = await req.consumeFlash('message');
             res.render('index', schemaViewParams({
                 ...initialParam,

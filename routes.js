@@ -66,6 +66,7 @@ route.post('/galery/update/:id', galeryMulter.single('image'), galery.update);
 route.get('/galery/delete/:id', galery.delete)
 
 // api
+route.get('/api/contact', contact.get)
 route.get('/api/services', services.get);
 route.get('/api/galery', galery.get);
 route.post('/api/orders/order', validator.orders.order, orders.order);
