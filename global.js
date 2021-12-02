@@ -25,7 +25,7 @@ const sidebars = [
         title: "Galery",
         icon: "fas fa-images",
         href: "/galery"
-    }
+    },
 ];
 
 const schemaViewParams = obj => {
@@ -62,6 +62,10 @@ const appendValidation = (validations = {}) => {
     }
 
     return result;
+}
+
+const middlewareLogin = () => {
+    
 }
 
 module.exports = {

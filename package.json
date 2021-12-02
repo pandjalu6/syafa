@@ -10,6 +10,7 @@
     "nodemon": "^2.0.14"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
@@ -17,6 +18,7 @@
     "express-flash-message": "^2.1.0",
     "express-session": "^1.17.2",
     "express-validator": "^6.13.0",
+    "handy-storage": "^2.1.6",
     "multer": "^1.4.3",
     "mysql2": "^2.3.3-rc.0",
     "nanoid": "^3.1.30",

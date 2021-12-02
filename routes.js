@@ -1,5 +1,5 @@
 const route = require('express').Router();
-const {dashboard, services, contact, orders, galery} = require('./controllers/index');
+const {dashboard, services, contact, orders, galery, login} = require('./controllers/index');
 const {appendValidation} = require('./global');
 const multer = require('multer');
 const nanoId = require('nanoid');
@@ -44,26 +44,30 @@ let validator = {
     }
 }
 
-route.get('/', dashboard.get);
 
-route.get('/contact', contact.get);
-route.get('/contact/edit', contact.edit);
-route.post('/contact/edit', validator.contact.update, contact.update);
+route.get('/login', login.login)
+route.post('/login', login.login)
 
-route.get('/services', services.get);
-route.get('/services/detail/:id', services.detail);
-route.get('/services/create', services.create);
-route.post('/services/create', validator.services.insert, services.insert);
-route.get('/services/edit/:id', services.edit);
-route.post('/services/edit/:id', validator.services.update, services.update);
-route.get('/services/delete/:id', services.delete);
+route.get('/', login.verifyLogin, dashboard.get);
 
-route.get('/orders', orders.get);
-route.get('/orders/done/:id', orders.done);
+route.get('/contact', login.verifyLogin, contact.get);
+route.get('/contact/edit', login.verifyLogin, contact.edit);
+route.post('/contact/edit', login.verifyLogin, validator.contact.update, contact.update);
 
-route.get('/galery', galery.get);
-route.post('/galery/update/:id', galeryMulter.single('image'), galery.update);
-route.get('/galery/delete/:id', galery.delete)
+route.get('/services', login.verifyLogin, services.get);
+route.get('/services/detail/:id', login.verifyLogin, services.detail);
+route.get('/services/create', login.verifyLogin, services.create);
+route.post('/services/create', login.verifyLogin, validator.services.insert, services.insert);
+route.get('/services/edit/:id', login.verifyLogin, services.edit);
+route.post('/services/edit/:id', login.verifyLogin, validator.services.update, services.update);
+route.get('/services/delete/:id', login.verifyLogin, services.delete);
+
+route.get('/orders', login.verifyLogin, orders.get);
+route.get('/orders/done/:id', login.verifyLogin, orders.done);
+
+route.get('/galery', login.verifyLogin, galery.get);
+route.post('/galery/update/:id', login.verifyLogin, galeryMulter.single('image'), galery.update);
+route.get('/galery/delete/:id', login.verifyLogin, galery.delete)
 
 // api
 route.get('/api/contact', contact.get)

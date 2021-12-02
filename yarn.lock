@@ -289,6 +289,14 @@ content-type@~1.0.4:
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
 
+cookie-parser@^1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.6.tgz#3ac3a7d35a7a03bbc7e365073a26074824214594"
+  integrity sha512-z3IzaNjdwUC2olLIB5/ITd0/setiaFMLYiZJle7xg5Fe9KWAceil7xszYfHHBtDFYLSgJduS2Ty0P1uJdPDJeA==
+  dependencies:
+    cookie "0.4.1"
+    cookie-signature "1.0.6"
+
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
@@ -621,6 +629,13 @@ graceful-fs@^4.1.2:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
 
+handy-storage@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/handy-storage/-/handy-storage-2.1.6.tgz#4524c35495a8b0fbb68581ae1fd2226c3723ab53"
+  integrity sha512-N+3LQjiOAUOtBYqOY8oBwo/S5t/dsiq+U72BEUp+DC0hxLsSuSyEXGekXLJm6O8cjZJe3W3RnH1x1Ym/n+HHXA==
+  dependencies:
+    json-beautify "^1.0.1"
+
 has-flag@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
@@ -815,6 +830,11 @@ jake@^10.6.1:
     chalk "^2.4.2"
     filelist "^1.0.1"
     minimatch "^3.0.4"
+
+json-beautify@^1.0.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/json-beautify/-/json-beautify-1.1.1.tgz#8a1ed511ad5d52ca63ed29f7c61896c6a6ebbb9f"
+  integrity sha512-17j+Hk2lado0xqKtUcyAjK0AtoHnPSIgktWRsEXgdFQFG9UnaGw6CHa0J7xsvulxRpFl6CrkDFHght1p5ZJc4A==
 
 json-buffer@3.0.0:
   version "3.0.0"
