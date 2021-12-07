@@ -46,7 +46,8 @@ let validator = {
 
 
 route.get('/login', login.login)
-route.post('/login', login.login)
+route.post('/login', login.login);
+route.get('/logout', login.logout);
 
 route.get('/', login.verifyLogin, dashboard.get);
 

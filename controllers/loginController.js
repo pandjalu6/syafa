@@ -42,5 +42,17 @@ module.exports = {
         }
 
         res.redirect('/login')
+    },
+
+    logout: (req,res,next) => {
+        res.clearCookie('email')
+        res.clearCookie('password')
+
+        res.send(`
+        Logout Success, wait for redirect
+        <script>
+            window.location.href = "${base_url}"
+        </script>
+        `)
     }
 }
