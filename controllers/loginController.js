@@ -47,6 +47,7 @@ module.exports = {
     logout: (req,res,next) => {
         res.clearCookie('email')
         res.clearCookie('password')
+        const base_url = req.protocol + '://' + req.get('host')
 
         res.send(`
         Logout Success, wait for redirect
